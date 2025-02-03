@@ -1,15 +1,20 @@
 
 
-import React from "react";
-import TodoApp from "./Components/TodoApp";
+import { TodoProvider } from "./context/TodoContext";
+import TodoInput from "./components/TodoInput";
+import TodoList from "./components/TodoList";
+import "./styles/TodoApp.css";
 
-function App() {
-  return (
-    <div>
-      <h1>Optimized Todo App</h1>
-      <TodoApp />
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <TodoProvider>
+            <div className="todo-app">
+                <h1>Todo List</h1>
+                <TodoInput />
+                <TodoList />
+            </div>
+        </TodoProvider>
+    );
+};
 
 export default App;
