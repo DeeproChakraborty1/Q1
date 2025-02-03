@@ -1,27 +1,29 @@
 
-import React, { useState } from "react";
 
-const TodoInput = ({ addTodo }) => {
-  const [task, setTask] = useState("");
+import { useState, useCallback } from "react";
+import { useTodos } from "../hooks/useTodos";
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (task.trim() === "") return;
-    addTodo(task);
-    setTask("");
-  };
+const TodoInput = () => {
+    const [text, setText] = useState("");
+    const { dispatch } = useTodos();
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={task}
-        onChange={(e) => setTask(e.target.value)}
-        placeholder="Enter a task"
-      />
-      <button type="submit">Add</button>
-    </form>
-  );
+    const addTodo = useCallback(() => {
+        if (text.trim() === "") return;
+        dispatch({ type: "ADD_TODO", payload: text });
+        setText("");
+    }, [text, dispatch]);
+
+    return (
+        <div>
+            <input
+                type="text"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                placeholder="Enter task..."
+            />
+            <button onClick={addTodo}>Add</button>
+        </div>
+    );
 };
 
-export default React.memo(TodoInput);
+export default TodoInput;
