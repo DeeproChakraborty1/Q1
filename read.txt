@@ -1,0 +1,84 @@
+Write a function that filters a contact list based on a search query. The function should search in both name and email fields and return matches sorted alphabetically by name.
+
+Input:
+
+```
+Contacts: [
+ { id: 1, name: "John Smith", email: "john.smith@example.com", phone: "123-456-7890" },
+ { id: 2, name: "Jane Doe", email: "jane.doe@company.org", phone: "234-567-8901" },
+ { id: 3, name: "Robert Johnson", email: "rob@example.com", phone: "345-678-9012" },
+ { id: 4, name: "Emily Davis", email: "emily.davis@company.org", phone: "456-789-0123" },
+ { id: 5, name: "Michael Brown", email: "michael@example.com", phone: "567-890-1234" }
+]
+
+Search query: "company"
+
+```
+
+Expected Output:
+
+```
+[
+ { id: 4, name: "Emily Davis", email: "emily.davis@company.org", phone: "456-789-0123" },
+ { id: 2, name: "Jane Doe", email: "jane.doe@company.org", phone: "234-567-8901" }
+]
+
+```
+
+Problem 2:  RecipeHub: Culinary Explorer Assessment
+
+Problem Statement
+
+Create a recipe exploration application using Next.js that demonstrates your understanding of key Next.js concepts. You'll build a user-friendly recipe browser that fetches data from TheMealDB API.
+
+Requirements
+
+1. Project Setup
+
+- Initialize a Next.js project using the App Router
+- Set up a clean, organized project structure
+
+- This Problem can also be done in React , but ensure that the below features are created for sure .
+
+
+2. Core Pages
+
+- Home page (/): Display featured recipes with a hero section
+- Recipes page (/recipes): List all recipes with basic filtering by category
+- Category page (/category/[category]): Display recipes filtered by category
+
+3. Components and Features
+
+- Implement a shared layout with navigation
+- Create a loading state for recipe pages
+- Add error handling for recipe fetching
+- Implement the Next.js Image component for recipe images
+- Create a search component for finding recipes by name
+
+4. Data Fetching
+
+- Use Server Components to fetch recipe data from TheMealDB API
+- Implement at least one Client Component for interactive elements (like search)
+- Demonstrate proper data fetching patterns
+- Implement pagination or infinite scroll for recipe listings
+
+5. API Route
+
+- Create a simple API route at /api/recipes/random that returns 4 random recipes
+- Add an API endpoint that allows searching recipes by ingredient
+
+Technical Requirements
+
+- Proper use of Server and Client Components
+- Correct implementation of dynamic routes
+- Appropriate error and loading states
+- Optimized images using next/image
+- Basic responsive design
+
+API Information
+
+Use TheMealDB API:
+
+- Random meal: https://www.themealdb.com/api/json/v1/1/random.php
+- Categories: https://www.themealdb.com/api/json/v1/1/categories.php
+- Meals by category: https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood
