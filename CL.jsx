@@ -136,3 +136,56 @@ function ContactListItem({ contact }) {
 }
 
 export default ContactListItem;
+
+
+
+
+
+// App.js
+
+import React, { useState } from 'react';
+import SearchBar from './components/SearchBar';
+import ContactList from './components/ContactList';
+
+const contacts = [
+  { id: 1, name: 'Alice Smith', email: 'alice@example.com' },
+  { id: 2, name: 'Bob Johnson', email: 'bob@example.com' },
+  { id: 3, name: 'Charlie Williams', email: 'charlie@example.com' },
+  { id: 4, name: 'David Brown', email: 'david@test.com' },
+  { id: 5, name: 'Eva Davis', email: 'eva@test.com' },
+  { id: 6, name: 'Frank Miller', email: 'frank@example.com' },
+  { id: 7, name: 'Grace Wilson', email: 'grace@test.com' },
+  { id: 8, name: 'Henry Moore', email: 'henry@example.com' },
+  { id: 9, name: 'Isabella Taylor', email: 'isabella@test.com' },
+];
+
+function App() {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
+
+  const filteredContacts = contacts
+    .filter((contact) => {
+      const searchLower = searchQuery.toLowerCase();
+      const nameLower = contact.name.toLowerCase();
+      const emailLower = contact.email.toLowerCase();
+
+      return (
+        nameLower.includes(searchLower) || emailLower.includes(searchLower)
+      );
+    })
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  return (
+    <div className="min-h-screen bg-gray-100 p-4">
+      <div className="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
+        <SearchBar onSearch={handleSearch} />
+        <ContactList contacts={filteredContacts} />
+      </div>
+    </div>
+  );
+}
+
+export default App;
